@@ -21,17 +21,31 @@ import java.util.Scanner;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-    double x1 = 53.911112; //53.911112, 27.409714, 1.5*10.55 /40075*360
+    //Координаты для поиска подарков в пределах минска
+    double x1 = 53.911112;
     double y1 = 27.409714;
     double r1 = 0;
 
-    double x2 = 53.940784; //53.940784, 27.673080, 1.5*10.36 /40075*360
+    double x2 = 53.940784;
     double y2 = 27.673080;
     double r2 = 0;
 
-    double x3 = 53.835465;//53.835465, 27.533305, 1.5*4.78  /40075*360
+    double x3 = 53.835465;
     double y3 = 27.533305;
     double r3 = 0;
+
+// А эти координаты для поиска подарков в пределах целой страны
+//    double x1 = 56.170736; //56.170736, 28.151242
+//    double y1 = 28.151242;
+//    double r1 = 0;
+//
+//    double x2 = 51.262013;//51.262013, 30.539409
+//    double y2 = 30.539409;
+//    double r2 = 0;
+//
+//    double x3 = 51.621310;//51.621310, 23.604127
+//    double y3 = 23.604127;
+//    double r3 = 0;
 
     EditText rad1;
     EditText rad2;
@@ -60,14 +74,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         bStart = findViewById(R.id.startID);
         bReset = findViewById(R.id.resetID);
 
-        bStart.setOnClickListener(new View.OnClickListener() { //button closes this fragment
+        bStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawCircles();
             }
         });
 
-        bReset.setOnClickListener(new View.OnClickListener() { //button closes this fragment
+        bReset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 resetAll();
@@ -88,17 +102,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
         // Add a marker in Sydney and move the camera
         //LatLng sydney = new LatLng(-34, 151);
-
         //mMap.addMarker(new MarkerOptions().position(minsk).title("Marker in Minsk"));
         //mMap.moveCamera(CameraUpdateFactory.newLatLng(minsk));
-
     }
 
     public void drawCircles() {
-        // Toast.makeText(bStart.getContext(),"Tfdvgest on",Toast.LENGTH_SHORT).show();
         LatLng minsk = new LatLng(53.902121, 27.557031);
         float zoom = 10;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minsk, zoom));
@@ -108,7 +118,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         r3 = stringToDouble(rad3.getText().toString());
 
 
-//        if (r1!=0&r2!=0&r3!=0){
+///*Проверка на заполненность полей с радиусами.
+//Проверка не рисует круги, пока все три поля не заполнены.
+//Решил отказаться от этой затеи, чтоб можно было рисовать по одному кругу,
+//не только три сразу*/
+// if (r1!=0&r2!=0&r3!=0){
 //            circle1 = mMap.addCircle(new CircleOptions()
 //                    .center(new LatLng(x1, y1))
 //                    .radius(r1)
@@ -157,8 +171,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         rad3.setText(null);
     }
 
-
-    public double stringToDouble(String string) {
+    public double stringToDouble(String string) { //Конвертирует стринг в дабл. Возвращает ноль, если стринг нулл
         Scanner scanner = new Scanner(string);
         double x = 0;
         try {
