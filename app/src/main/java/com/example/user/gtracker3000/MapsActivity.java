@@ -72,5 +72,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .radius(r3)
                 .strokeColor(Color.RED)
                 .fillColor(0x220000FF));
-    }
+    }//
 }
