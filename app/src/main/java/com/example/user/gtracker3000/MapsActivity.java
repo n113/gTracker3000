@@ -12,6 +12,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
@@ -112,11 +113,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minskCityCenter, zoom));
 
         marker1 = mMap.addMarker(new MarkerOptions()
-                .position(defPoint1).title("Circle1").draggable(true));
+                .position(defPoint1).title("Circle1").draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA)));
         marker2 = mMap.addMarker(new MarkerOptions()
-                .position(defPoint2).title("Circle2").draggable(true));
+                .position(defPoint2).title("Circle2").draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
         marker3 = mMap.addMarker(new MarkerOptions()
-                .position(defPoint3).title("Circle3").draggable(true));
+                .position(defPoint3).title("Circle3").draggable(true).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN)));
 
         mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
             @Override
@@ -173,18 +174,18 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         circle1 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(marker1.getPosition().latitude, marker1.getPosition().longitude))
                 .radius(r1)
-                .strokeColor(0x220000FF)
-                .fillColor(0x220000FF));
+                .strokeColor(0x22f52ee5)
+                .fillColor  (0x22f52ee5));
         circle2 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(marker2.getPosition().latitude, marker2.getPosition().longitude))
                 .radius(r2)
-                .strokeColor(0x220000FF)
-                .fillColor(0x220000FF));
+                .strokeColor(0x222ef546)
+                .fillColor  (0x222ef546));
         circle3 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(marker3.getPosition().latitude, marker3.getPosition().longitude))
                 .radius(r3)
-                .strokeColor(0x220000FF)//Color.RED
-                .fillColor(0x220000FF));
+                .strokeColor(0x221aced5)//Color.RED
+                .fillColor  (0x221aced5));
 
     }
 
