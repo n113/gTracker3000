@@ -4,14 +4,15 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:background="@drawable/gradient">
 
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="600dp"
         tools:context=".MapsActivity"
         tools:layout="@layout/abc_list_menu_item_radio" />
 
@@ -27,6 +28,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Rad1"
+            android:textColor="#FFFFE83D"
+            android:textColorHint="#FF29F39B"
             android:inputType="numberDecimal" />
 
         <EditText
@@ -37,6 +40,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Rad2"
+            android:textColor="#FFFFE83D"
+            android:textColorHint="#FF29F39B"
             android:inputType="numberDecimal" />
 
         <EditText
@@ -46,6 +51,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:hint="Rad3"
+            android:textColor="#FFFFE83D"
+            android:textColorHint="#FF29F39B"
             android:inputType="numberDecimal" />
 
         <Button
@@ -53,6 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#ffe83d"
             android:text="start" />
 
         <Button
@@ -60,6 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:background="#ffe83d"
             android:text="RESET" />
     </LinearLayout>
 </LinearLayout>

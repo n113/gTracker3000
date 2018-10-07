@@ -179,13 +179,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         circle2 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(marker2.getPosition().latitude, marker2.getPosition().longitude))
                 .radius(r2)
-                .strokeColor(0x222ef546)
-                .fillColor  (0x222ef546));
+                .strokeColor(0x2200fc3b)
+                .fillColor  (0x2200fc3b));
         circle3 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(marker3.getPosition().latitude, marker3.getPosition().longitude))
                 .radius(r3)
-                .strokeColor(0x221aced5)//Color.RED
-                .fillColor  (0x221aced5));
+                .strokeColor(0x2200b8c9)//Color.RED
+                .fillColor  (0x2200b8c9));
 
     }
 
