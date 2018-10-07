@@ -15,24 +15,33 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.Scanner;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private GoogleMap mMap;
-    //Координаты для поиска подарков в пределах минска
-    double x1 = 53.911112;
-    double y1 = 27.409714;
+    //Координаты для поиска подарков в пределах минска/ startPoints
+    //TODO change name of the x and y to starPointX1
+    double defStartPointX1 = 53.911112;
+    double defStartPointY1 = 27.409714;
     double r1 = 0;
 
-    double x2 = 53.940784;
-    double y2 = 27.673080;
+    double defStartPointX2 = 53.940784;
+    double defStartPointY2 = 27.673080;
     double r2 = 0;
 
-    double x3 = 53.835465;
-    double y3 = 27.533305;
+    double defStartPointX3 = 53.835465;
+    double defStartPointY3 = 27.533305;
     double r3 = 0;
+
+    LatLng minskCityCenter = new LatLng(53.902121, 27.557031);
+    LatLng defPoint1 = new LatLng(defStartPointX1, defStartPointY1);
+    LatLng defPoint2 = new LatLng(defStartPointX2,defStartPointY2);
+    LatLng defPoint3 = new LatLng(defStartPointX3,defStartPointY3);
+
+
 
 // А эти координаты для поиска подарков в пределах целой страны
 //    double x1 = 56.170736; //56.170736, 28.151242
@@ -57,6 +66,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     Circle circle1;
     Circle circle2;
     Circle circle3;
+
+    public Marker marker1;
+    public Marker marker2;
+    public Marker marker3;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,35 +101,47 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 resetAll();
             }
         });
+
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        // Add a marker in Sydney and move the camera
-        //LatLng sydney = new LatLng(-34, 151);
-        //mMap.addMarker(new MarkerOptions().position(minsk).title("Marker in Minsk"));
-        //mMap.moveCamera(CameraUpdateFactory.newLatLng(minsk));
+
+        float zoom = 10; //focus on center of the City
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minskCityCenter, zoom));
+
+        marker1 = mMap.addMarker(new MarkerOptions()
+                .position(defPoint1).title("Circle1").draggable(true));
+        marker2 = mMap.addMarker(new MarkerOptions()
+                .position(defPoint2).title("Circle2").draggable(true));
+        marker3 = mMap.addMarker(new MarkerOptions()
+                .position(defPoint3).title("Circle3").draggable(true));
+
+        mMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker marker) {
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker marker) {
+            }
+
+            @Override
+            public void onMarkerDrag(Marker marker) {
+            }
+        });
     }
 
-    public void drawCircles() {
-        LatLng minsk = new LatLng(53.902121, 27.557031);
-        float zoom = 10;
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(minsk, zoom));
 
+
+
+    public void drawCircles() {
         r1 = stringToDouble(rad1.getText().toString());
         r2 = stringToDouble(rad2.getText().toString());
         r3 = stringToDouble(rad3.getText().toString());
+
+
 
 
 ///*Проверка на заполненность полей с радиусами.
@@ -145,17 +171,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        }
 
         circle1 = mMap.addCircle(new CircleOptions()
-                .center(new LatLng(x1, y1))
+                .center(new LatLng(marker1.getPosition().latitude, marker1.getPosition().longitude))
                 .radius(r1)
                 .strokeColor(0x220000FF)
                 .fillColor(0x220000FF));
         circle2 = mMap.addCircle(new CircleOptions()
-                .center(new LatLng(x2, y2))
+                .center(new LatLng(marker2.getPosition().latitude, marker2.getPosition().longitude))
                 .radius(r2)
                 .strokeColor(0x220000FF)
                 .fillColor(0x220000FF));
         circle3 = mMap.addCircle(new CircleOptions()
-                .center(new LatLng(x3, y3))
+                .center(new LatLng(marker3.getPosition().latitude, marker3.getPosition().longitude))
                 .radius(r3)
                 .strokeColor(0x220000FF)//Color.RED
                 .fillColor(0x220000FF));
@@ -169,6 +195,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         rad1.setText(null);
         rad2.setText(null);
         rad3.setText(null);
+       // makeToast(mSydney.getPosition().toString());
     }
 
     public double stringToDouble(String string) { //Конвертирует стринг в дабл. Возвращает ноль, если стринг нулл
@@ -183,7 +210,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void makeToast(String text) {
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, text, Toast.LENGTH_LONG).show();
     }
 
 }
