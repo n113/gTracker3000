@@ -1,72 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
     android:orientation="vertical"
     android:background="@drawable/gradient">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/map"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="530dp"
-        tools:context=".MapsActivity"
-        android:layout_marginTop="20dp"
-        tools:layout="@layout/abc_list_menu_item_radio" />
-
     <LinearLayout
+        android:id="@+id/shadowLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/shadow_layout">
 
-        <EditText
-            android:id="@+id/rad1ID"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:textColor="#FFFFE83D"
-            android:textColorHint="#FF29F39B" />
+        <fragment
+            android:id="@+id/map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="530dp"
 
-        <EditText
-            android:id="@+id/rad2ID"
-            style="@style/Widget.AppCompat.AutoCompleteTextView"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:textColor="#FFFFE83D"
-            android:textColorHint="#FF29F39B" />
+            tools:context=".MapsActivity"
+            tools:layout="@layout/abc_list_menu_item_radio" />
 
-        <EditText
-            android:id="@+id/rad3ID"
-            android:layout_width="40dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:inputType="numberDecimal"
-            android:textColor="#FFFFE83D"
-            android:textColorHint="#FF29F39B" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/startID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#ffe83d"
-            android:text="start" />
+            <EditText
+                android:id="@+id/rad1ID"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFE83D"
+                android:textColorHint="#FF29F39B" />
 
-        <Button
-            android:id="@+id/resetID"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#ffe83d"
-            android:text="RESET" />
+            <EditText
+                android:id="@+id/rad2ID"
+                style="@style/Widget.AppCompat.AutoCompleteTextView"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFE83D"
+                android:textColorHint="#FF29F39B" />
+
+            <EditText
+                android:id="@+id/rad3ID"
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="numberDecimal"
+                android:textColor="#FFFFE83D"
+                android:textColorHint="#FF29F39B" />
+
+            <Button
+                android:id="@+id/startID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffe83d"
+                android:text="start" />
+
+            <Button
+                android:id="@+id/resetID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#ffe83d"
+                android:text="RESET" />
+        </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>
